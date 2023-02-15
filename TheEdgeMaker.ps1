@@ -14,7 +14,16 @@ Try {
 Catch {
     Write-Verbose "Azure AD PowerShell Module not found..."
     Write-Verbose "Installing Azure AD PowerShell Module..."
-    Install-Module -Name AzureAD -Force -AllowClobber
+    Install-Module -Name AzureAD -Force -AllowClobber -Force
+}
+
+Try {
+    Import-Module -Name Az -ErrorAction Stop -Verbose:$false | Out-Null
+}
+Catch {
+    Write-Verbose "Az PowerShell Module not found..."
+    Write-Verbose "Installing Az PowerShell Module..."
+    Install-Module -Name Az -Force -AllowClobber -Force
 }
 
 Try {
